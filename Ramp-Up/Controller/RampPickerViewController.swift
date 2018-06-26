@@ -31,13 +31,33 @@ class RampPickerViewController: UIViewController {
         view.insertSubview(sceneView, at: 0)
 
         preferredContentSize = size
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let scene = SCNScene(named: "art.scnassets/ramps.scn")!
+        sceneView.scene = scene
+
+        let camera = SCNCamera()
+        camera.usesOrthographicProjection = true
+        scene.rootNode.camera = camera
+
+        var obj = SCNScene(named: "art.scnassets/pipe.dae")
+        var node = obj?.rootNode.childNode(withName: "pipe", recursively: true)
+        node?.scale = SCNVector3Make(0.0022, 0.0022, 0.0022)
+        node?.position = SCNVector3Make(-1.35, 1.32, 0.15)
+        scene.rootNode.addChildNode(node!)
+
+        obj = SCNScene(named: "art.scnassets/pyramid.dae")
+        node = obj?.rootNode.childNode(withName: "pyramid", recursively: true)
+        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
+        node?.position = SCNVector3Make(-2.35, -0.32, -1)
+        scene.rootNode.addChildNode(node!)
+
+        obj = SCNScene(named: "art.scnassets/quarter.dae")
+        node = obj?.rootNode.childNode(withName: "quarter", recursively: true)
+        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
+        node?.position = SCNVector3Make(-2.35, -2.1, -1)
+        scene.rootNode.addChildNode(node!)
+
     }
-    
 
     /*
     // MARK: - Navigation
