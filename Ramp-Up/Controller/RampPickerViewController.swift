@@ -13,6 +13,7 @@ class RampPickerViewController: UIViewController {
 
     var sceneView: SCNView!
     var size: CGSize!
+    weak var rampPlacerVC: RampPlacerViewController!
 
     init(size: CGSize) {
         super.init(nibName: nil, bundle: nil)
@@ -39,23 +40,32 @@ class RampPickerViewController: UIViewController {
         camera.usesOrthographicProjection = true
         scene.rootNode.camera = camera
 
-        var obj = SCNScene(named: "art.scnassets/pipe.dae")
-        var node = obj?.rootNode.childNode(withName: "pipe", recursively: true)
-        node?.scale = SCNVector3Make(0.0022, 0.0022, 0.0022)
-        node?.position = SCNVector3Make(-1.35, 1.32, 0.15)
-        scene.rootNode.addChildNode(node!)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        sceneView.addGestureRecognizer(tap)
 
-        obj = SCNScene(named: "art.scnassets/pyramid.dae")
-        node = obj?.rootNode.childNode(withName: "pyramid", recursively: true)
-        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
-        node?.position = SCNVector3Make(-2.35, -0.32, -1)
-        scene.rootNode.addChildNode(node!)
+        let pipe = Ramp.getPipe()
+        Ramp.startRotation(node: pipe)
+        scene.rootNode.addChildNode(pipe)
 
-        obj = SCNScene(named: "art.scnassets/quarter.dae")
-        node = obj?.rootNode.childNode(withName: "quarter", recursively: true)
-        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
-        node?.position = SCNVector3Make(-2.35, -2.1, -1)
-        scene.rootNode.addChildNode(node!)
+        let pyramid = Ramp.getPyramid()
+        Ramp.startRotation(node: pyramid)
+        scene.rootNode.addChildNode(pyramid)
+
+        let quarter = Ramp.getQuarter()
+        Ramp.startRotation(node: quarter)
+        scene.rootNode.addChildNode(quarter)
+
+    }
+
+    @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        let p = gestureRecognizer.location(in: sceneView)
+        let hitResults = sceneView.hitTest(p, options: [:])
+
+        if hitResults.count > 0 {
+            let node = hitResults[0].node
+            print(node.name!)
+            rampPlacerVC.onRampSelected(node.name!)
+        }
 
     }
 

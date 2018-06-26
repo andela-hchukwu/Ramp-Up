@@ -14,6 +14,7 @@
 		47C5B1E820E22BFC0012ECB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47C5B1E720E22BFC0012ECB2 /* Assets.xcassets */; };
 		47C5B1EB20E22BFC0012ECB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C5B1E920E22BFC0012ECB2 /* LaunchScreen.storyboard */; };
 		47C5B1F420E255950012ECB2 /* RampPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5B1F320E255950012ECB2 /* RampPickerViewController.swift */; };
+		47C5B1F920E282230012ECB2 /* Ramp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5B1F820E282230012ECB2 /* Ramp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		47C5B1EA20E22BFC0012ECB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47C5B1EC20E22BFC0012ECB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47C5B1F320E255950012ECB2 /* RampPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RampPickerViewController.swift; sourceTree = "<group>"; };
+		47C5B1F820E282230012ECB2 /* Ramp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ramp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		47C5B1DD20E22BFC0012ECB2 /* Ramp-Up */ = {
 			isa = PBXGroup;
 			children = (
+				47C5B1F720E282120012ECB2 /* Model */,
 				47C5B1F220E22D590012ECB2 /* Controller */,
 				47C5B1DE20E22BFC0012ECB2 /* AppDelegate.swift */,
 				47C5B1E020E22BFC0012ECB2 /* art.scnassets */,
@@ -76,6 +79,14 @@
 				47C5B1F320E255950012ECB2 /* RampPickerViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		47C5B1F720E282120012ECB2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47C5B1F820E282230012ECB2 /* Ramp.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47C5B1E320E22BFC0012ECB2 /* RampPlacerViewController.swift in Sources */,
+				47C5B1F920E282230012ECB2 /* Ramp.swift in Sources */,
 				47C5B1F420E255950012ECB2 /* RampPickerViewController.swift in Sources */,
 				47C5B1DF20E22BFC0012ECB2 /* AppDelegate.swift in Sources */,
 			);
